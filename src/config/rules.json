@@ -1,0 +1,20 @@
+[
+  {
+    "type": "IPRule",
+    "ip": "192.168.1.1",
+    "capacity": 100,
+    "refillRate": 10
+  },
+  {
+    "type": "EndpointRule",
+    "endpoint": "/api/v1/resource",
+    "capacity": 500,
+    "refillRate": 50
+  },
+  {
+    "type": "UserRule",
+    "userId": "user123",
+    "capacity": 200,
+    "refillRate": 20
+  }
+]
