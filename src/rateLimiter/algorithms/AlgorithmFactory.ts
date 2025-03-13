@@ -1,8 +1,10 @@
 import { FixedWindowRateLimitAdapter } from "./FixedWindowRateLimitAdapter";
 import { IRateLimiterAdapter } from "./IRateLimiterAdapter";
+import { TokenBucketRateLimitAdapter } from './TokenBucketRateLimitAdapter'
 
 export enum AlgorithmType {
   FIXED_WINDOW = "FIXED_WINDOW",
+  TOKEN_BUCKET = "TOKEN_BUCKET",
 }
 
 export class AlgorithmFactory {
@@ -16,9 +18,10 @@ export class AlgorithmFactory {
     type: AlgorithmType,
   ): new () => IRateLimiterAdapter {
     switch (type) {
-      case "FIXED_WINDOW":
+      case AlgorithmType.FIXED_WINDOW:
         return FixedWindowRateLimitAdapter;
-      // Add cases for other algorithms here
+      case AlgorithmType.TOKEN_BUCKET:
+        return TokenBucketRateLimitAdapter;
       default:
         throw new Error(`Unsupported algorithm type: ${type}`);
     }
